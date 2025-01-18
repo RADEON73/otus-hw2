@@ -34,6 +34,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: IpFilter
-          asset_name: IpFilter
+          asset_path: ./IpFilter-1.0.0-Linux.deb
+          asset_name: IpFilter-1.0.0-Linux-Linux.deb
           asset_content_type: application/vnd.debian.binary-package
