@@ -13,7 +13,7 @@ jobs:
         with:
           submodules: true
       - run: sudo apt-get update && sudo apt-get install libgtest-dev -y
-      - run: cmake . -DPATCH_VERSION=${{ github.run_number }}
+      - run: cmake .
       - run: cmake --build .
       - run: cmake --build . --target test
       - run: cmake --build . --target package
@@ -34,6 +34,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./IpFilter-${{ github.run_number }}.0.0-Linux.deb
-          asset_name: IpFilter-${{ github.run_number }}.0.0-Linux.deb
+          asset_path: IpFilter
+          asset_name: IpFilter
           asset_content_type: application/vnd.debian.binary-package
