@@ -1,25 +1,26 @@
 #include <iostream>
 #include "IpList.h"
 
-int main(int argc, char const* argv[])
+int main()
 {
+    std::array<int, 1> test;
     try {
         IPList ipList;
-        ipList.fill(); //Для локального запуска вне тестов с тестовыми данными замените эту строку на "ipList.read("ip_filter.tsv");"
+        ipList.fill(); //Р”Р»СЏ Р»РѕРєР°Р»СЊРЅРѕРіРѕ Р·Р°РїСѓСЃРєР° РІРЅРµ С‚РµСЃС‚РѕРІ СЃ С‚РµСЃС‚РѕРІС‹РјРё РґР°РЅРЅС‹РјРё Р·Р°РјРµРЅРёС‚Рµ СЌС‚Сѓ СЃС‚СЂРѕРєСѓ РЅР° "ipList.read("ip_filter.tsv");"
         ipList.reverse();
         ipList.print();
 
-        auto firstByte1Filter = [](const IPAddress& ip) {
+        auto firstByte1Filter = [](IPAddress& ip) {
             return ip.at(0) == 1;
             };
         ipList.print_if_cpp20(firstByte1Filter);
 
-        auto firstByte46SecondByte70Filter = [](const IPAddress& ip) {
+        auto firstByte46SecondByte70Filter = [](IPAddress& ip) {
             return ip.at(0) == 46 && ip.at(1) == 70;
             };
         ipList.print_if_cpp20(firstByte46SecondByte70Filter);
 
-        auto any46Filter = [](const IPAddress& ip) {
+        auto any46Filter = [](IPAddress& ip) {
             return std::find(ip.begin(), ip.end(), 46) != ip.end();
             };
         ipList.print_if_cpp20(any46Filter);
